@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music/Authentication/login.dart';
+import 'package:music/Screens/welcome.dart';
 import 'package:music/class_objs/drawer.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -150,7 +151,7 @@ Formfields(text: 'Email', icon: Icons.email, controller:email, validator: (value
                               ).then((value) {
                                 print('user created');
                                nameController.name.value = UserName;
-                                Get.to(Categories());
+                                Get.to(Welcome());
                               });
                             } catch (e) {
                               print(e.toString());

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music/Screens/categories.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import '../Authentication/Signup.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -61,12 +64,12 @@ class _WelcomeState extends State<Welcome> {
                 ],
               ),
                     ),
-                      SizedBox(height: 3.h,),
+                      SizedBox(height: 2.h,),
                     Text(
   'باہر کا ذائقہ گھر میں',
   style: GoogleFonts.roboto(
     textStyle: TextStyle(
-      fontSize: 22.sp,
+      fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
       letterSpacing: 1.2, // Adjust the letter spacing for a stylized effect
@@ -84,15 +87,16 @@ class _WelcomeState extends State<Welcome> {
 
                       SizedBox(height: 22.h,),
                       Container(
-              width: 43.5.w,
-              height: 6.h,
+              width: 50.w,
+              height: 7.h,
               decoration: BoxDecoration(
                 color: Color.fromRGBO(217, 150, 81, 1),
-                borderRadius: BorderRadius.circular(25.sp),
+                borderRadius: BorderRadius.circular(22.sp),
               ),
               child: TextButton(
                 onPressed: () {
                   // Handle button press
+                  Get.to(Categories());
                 },
                 child: Text(
                   'Get Started',
@@ -105,24 +109,7 @@ class _WelcomeState extends State<Welcome> {
               ),
                       ),
                       
-                      Padding(
-              padding:  EdgeInsets.only(left:35.sp),
-              child:   TextButton(onPressed: (){}, child: Text(
-              
-              'Sign Up',
-              
-              style: TextStyle(
-              
-                color: Color.fromARGB(255, 255, 255, 255),
-              
-                fontSize: 18.sp,
-              
-                fontWeight: FontWeight.bold,
-              
-              ),
-              
-                    ),),
-                      )
+                   
                        
                       
                       

@@ -34,14 +34,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
-    return GetMaterialApp(
-      initialRoute: '/',
-      getPages: [
-        GetPage(name: '/', page: () => Favorites()),
-        GetPage(name: '/palau', page: () => Palao()),
-        GetPage(name: '/korma', page: () => Korma()),
-        // Register other recipe screens
-      ],
+        
+    return const GetMaterialApp(
+    
+               debugShowCheckedModeBanner: false,
+
       home:Signup(),
       
     );

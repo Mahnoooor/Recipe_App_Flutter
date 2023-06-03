@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music/Screens/categories.dart';
+import 'package:music/Screens/welcome.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'NameController.dart';
@@ -72,7 +74,7 @@ class _drawerState extends State<drawer> {
                     ],
                   ),
                   onTap: () {
-                    // Handle item 1 tap
+                    Get.to(Welcome());
                   },
                 ),
                 ListTile(
@@ -96,7 +98,7 @@ class _drawerState extends State<drawer> {
                     ],
                   ),
                   onTap: () {
-                    // Handle item 2 tap
+                   Get.to(Categories());
                   },
                 ),
                 ListTile(

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music/Authentication/Signup.dart';
 import 'package:music/Screens/categories.dart';
+import 'package:music/Screens/welcome.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../class_objs/NameController.dart';
@@ -43,7 +44,7 @@ FirebaseAuth _auth = FirebaseAuth.instance;
     );
     print('user logged in');
      nameController.name.value = name.text;
-    Get.to(Categories());
+    Get.to(Welcome());
   } catch (e) {
     debugPrint(e.toString());
     print(e.toString());
@@ -87,7 +88,7 @@ FirebaseAuth _auth = FirebaseAuth.instance;
                   height: 2.5.h,
                 ),
                 
-                Text( 'First create your account 👩‍🍳',
+                Text( 'LogIn to your account 👩‍🍳',
               style: GoogleFonts.roboto(
                 textStyle: TextStyle(
                   fontSize: 18.sp,

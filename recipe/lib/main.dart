@@ -37,11 +37,11 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
         
-    return  GetMaterialApp(
+    return const  GetMaterialApp(
     
                debugShowCheckedModeBanner: false,
 
-      home:Feed(),
+      home:Signup(),
       
     );
       }

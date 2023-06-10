@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music/Authentication/login.dart';
+import 'package:music/Screens/home.dart';
 import 'package:music/Screens/welcome.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -18,6 +19,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'Screens/category/chinese/chinese.dart';
 import 'Screens/category/chinese/dumpling.dart';
 import 'Screens/Fav.dart';
+import 'Screens/Feed.dart';
 
 
 void main() async {
@@ -35,11 +37,11 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
         
-    return const GetMaterialApp(
+    return  GetMaterialApp(
     
                debugShowCheckedModeBanner: false,
 
-      home:Signup(),
+      home:Feed(),
       
     );
       }

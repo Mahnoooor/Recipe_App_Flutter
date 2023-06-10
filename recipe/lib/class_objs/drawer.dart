@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music/Screens/categories.dart';
+import 'package:music/Screens/home.dart';
+import 'package:music/Screens/Feed.dart';
 import 'package:music/Screens/welcome.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -74,7 +76,7 @@ class _drawerState extends State<drawer> {
                     ],
                   ),
                   onTap: () {
-                    Get.to(Welcome());
+                    Get.to(Post());
                   },
                 ),
                 ListTile(
@@ -123,6 +125,31 @@ class _drawerState extends State<drawer> {
                   ),
                   onTap: () {
                     Get.to(Favorites());
+                  },
+                ),
+
+                ListTile(
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.picture_in_picture,
+                        color: Color.fromARGB(255, 107, 67, 20),
+                      ),
+                      SizedBox(width: 1.5.w),
+                      Text(
+                        'Posts',
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(217, 150, 81, 1),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Get.to(Feed());
                   },
                 )
               ],

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../class_objs/commentController.dart';
 import 'home.dart';
 
 
@@ -14,11 +15,12 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+    final Comment_Controller commentController = Get.put(Comment_Controller());
   List<String> comments = []; 
 ScrollController scrollController = ScrollController(); 
 Map<String, List<String>> commentsMap = {};
 
-TextEditingController commentController = TextEditingController(); 
+TextEditingController commenttController = TextEditingController(); 
   CollectionReference _reference =
       FirebaseFirestore.instance.collection('posts');
       bool like=false;
@@ -121,8 +123,8 @@ SizedBox(height: 3.h,),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.black87,
-                    width: 0.5.w,
+                    color: Colors.brown,
+                    width: 0.25.w,
                   ),
                 ),
                 width: 90.w,
@@ -167,65 +169,64 @@ SizedBox(height: 3.h,),
                   children: [
                 
              IconButton(
-  onPressed: () {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        // Get the image URL or ID associated with the comment section
-        String imageUrlOrId = item['image'];
+onPressed: () {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      // Get the image URL or ID associated with the comment section
+      String imageUrlOrId = item['image'];
 
-        return SingleChildScrollView(
-          controller: scrollController,
-          child: Container(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                TextField(
-                  controller: commentController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter your comment',
-                  ),
+      return SingleChildScrollView(
+        controller: scrollController,
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextField(
+                controller: commenttController,
+                decoration: InputDecoration(
+                  hintText: 'Enter your comment',
                 ),
-                SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      // Add the comment to the appropriate comment list
-                      if (commentsMap.containsKey(imageUrlOrId)) {
-                        commentsMap[imageUrlOrId]!.add(commentController.text);
-                      } else {
-                        commentsMap[imageUrlOrId] = [commentController.text];
-                      }
-                      commentController.clear();
-                    });
-                    // Scroll to the bottom of the list
-                    scrollController.jumpTo(scrollController.position.maxScrollExtent);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(217, 150, 81, 1)),
-                  ),
-                  child: Text('Post Comment'),
+              ),
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    // Add the comment using CommentController
+                    commentController.addComment(imageUrlOrId, commenttController.text);
+                    commenttController.clear();
+                  });
+                  // Scroll to the bottom of the list
+                  scrollController.jumpTo(scrollController.position.maxScrollExtent);
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(217, 150, 81, 1)),
                 ),
-                SizedBox(height: 16.0),
-                ListView.builder(
+                child: Text('Post Comment'),
+              ),
+              SizedBox(height: 16.0),
+              Obx(() {
+                return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: commentsMap.containsKey(imageUrlOrId)
-                      ? commentsMap[imageUrlOrId]!.length
+                  itemCount: commentController.commentsMap.containsKey(imageUrlOrId)
+                      ? commentController.commentsMap[imageUrlOrId]!.length
                       : 0,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                      title: Text(commentsMap[imageUrlOrId]![index]),
+                      title: Text(commentController.commentsMap[imageUrlOrId]![index]),
                     );
                   },
-                ),
-              ],
-            ),
+                );
+              }),
+            ],
           ),
-        );
-      },
-    );
-  },
+        ),
+      );
+    },
+  );
+},
+
   icon: Image.asset('assets/c.png'),
 ),
 

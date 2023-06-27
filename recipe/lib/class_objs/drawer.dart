@@ -28,9 +28,9 @@ class _drawerState extends State<drawer> {
           bottomRight: Radius.circular(20.sp),
         ),
         child: Container(
-          height: 70.h,
+          height: 80.h,
           child: Drawer(
-            width: 55.w,
+            width: 60.w,
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
@@ -59,12 +59,12 @@ class _drawerState extends State<drawer> {
                   title: Row(
                     children: [
                       Icon(
-                        Icons.home,
+                        Icons.feedback_outlined,
                         color: Color.fromARGB(255, 107, 67, 20),
                       ),
                       SizedBox(width: 1.5.w),
                       Text(
-                        'Home',
+                        'Feedback',
                         style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                             fontSize: 20.sp,
